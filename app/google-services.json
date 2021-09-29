@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "365156783703",
+    "firebase_url": "https://online-tailor-service-app-default-rtdb.firebaseio.com",
+    "project_id": "online-tailor-service-app",
+    "storage_bucket": "online-tailor-service-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365156783703:android:fa12f312eb53b940513512",
+        "android_client_info": {
+          "package_name": "com.example.craftcorner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365156783703-bpf9t9k323e2at285qlqabjn9o7qdo59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.craftcorner",
+            "certificate_hash": "b28161e54d55da3b0b48e115fe14492253e0517e"
+          }
+        },
+        {
+          "client_id": "365156783703-dte31p1nhmeh96dle8d19cd213satfft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHApnjQ3LajvZ2hYMuAwZccKdHDZdSenY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365156783703-9si2644339210834djct74h7tit7llln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365156783703:android:83850f870d54146b513512",
+        "android_client_info": {
+          "package_name": "com.ots.otscustomer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365156783703-qvq73mcpiu6k9juk8gkfaatb5uakqpod.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ots.otscustomer",
+            "certificate_hash": "b28161e54d55da3b0b48e115fe14492253e0517e"
+          }
+        },
+        {
+          "client_id": "365156783703-ruetcqjk1fjbk4an2dkh2qj6j061rmd8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ots.otscustomer",
+            "certificate_hash": "407c5ce4bbad4f732c37f4ec31262dcc001766e4"
+          }
+        },
+        {
+          "client_id": "365156783703-dte31p1nhmeh96dle8d19cd213satfft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHApnjQ3LajvZ2hYMuAwZccKdHDZdSenY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365156783703-9si2644339210834djct74h7tit7llln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365156783703:android:317a16e35da44d7e513512",
+        "android_client_info": {
+          "package_name": "com.ots.otstailor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365156783703-t4f3deqqbgj58dhs76spejskth915oj7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ots.otstailor",
+            "certificate_hash": "b28161e54d55da3b0b48e115fe14492253e0517e"
+          }
+        },
+        {
+          "client_id": "365156783703-dte31p1nhmeh96dle8d19cd213satfft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHApnjQ3LajvZ2hYMuAwZccKdHDZdSenY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365156783703-9si2644339210834djct74h7tit7llln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

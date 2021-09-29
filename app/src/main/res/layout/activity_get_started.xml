@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/vector"
+    tools:context=".GetStartedActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:fontFamily="@font/bauhaus"
+        android:text="Welcome to the Craft Corner"
+        android:textColor="@color/white"
+        android:textSize="40dp" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/indicator"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+
+    <LinearLayout
+        android:layout_marginBottom="40dp"
+        android:padding="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/clientAuthButton"
+        app:cornerRadius="10dp"
+        android:text="Continue as client"
+        android:textAllCaps="false"
+        app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+        app:iconGravity="end"
+        android:textSize="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tailorAuthButton"
+            android:layout_marginTop="10dp"
+            android:text="Continue as tailor"
+            android:textAllCaps="false"
+            app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:iconGravity="end"
+            app:cornerRadius="10dp"
+            android:textSize="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
