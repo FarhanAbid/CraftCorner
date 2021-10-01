@@ -137,6 +137,8 @@ public class AddNewProductFragment extends DialogFragment {
         hashMap.put("Product_DeliveryHours",time);
         hashMap.put("Product_Description",desc);
         hashMap.put("Product_Type",type);
+        hashMap.put("Product_Status","available");
+        hashMap.put("Product_Rating","0.0");
         hashMap.put("Product_Category",category);
 
 

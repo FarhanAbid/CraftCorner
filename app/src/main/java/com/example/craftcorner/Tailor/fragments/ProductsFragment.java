@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class ProductsFragment extends Fragment {
 
-    ArrayList<String> imageUrl,title;
+    ArrayList<String> imageUrl,title,productID;
 
 
     @Override
@@ -54,19 +54,21 @@ public class ProductsFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     imageUrl=new ArrayList<>();
                     title=new ArrayList<>();
+                    productID=new ArrayList<>();
                     for (DataSnapshot snap:snapshot.getChildren()) {
                         if (snap.exists() && snap.hasChildren()){
                             if (Objects.equals(snap.child("Product_Tailor_ID").getValue(String.class), FirebaseAuth.getInstance().getCurrentUser().getUid())){
 
                                 imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                 title.add(snap.child("Product_Title").getValue(String.class));
+                                productID.add(snap.child("Product_ID").getValue(String.class));
 
                             }
                         }else{
                             noProductImage.setVisibility(View.VISIBLE);
                         }
                     }
-                    GridAdapter adapter=new GridAdapter(getContext(),title,imageUrl);
+                    GridAdapter adapter=new GridAdapter(getContext(),title,imageUrl,productID,getParentFragmentManager());
                     gridView.setAdapter(adapter);
                 }
 

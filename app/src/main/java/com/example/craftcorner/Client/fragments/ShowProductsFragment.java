@@ -31,7 +31,7 @@ import java.util.Objects;
 
 public class ShowProductsFragment extends DialogFragment {
 
-    ArrayList<String> imageUrl,title;
+    ArrayList<String> imageUrl,title,productID;
 
     String productType;
 
@@ -57,6 +57,7 @@ public class ShowProductsFragment extends DialogFragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     imageUrl=new ArrayList<>();
                     title=new ArrayList<>();
+                    productID=new ArrayList<>();
                     for (DataSnapshot snap:snapshot.getChildren()) {
                         if (snap.exists() && snap.hasChildren()){
 
@@ -65,6 +66,7 @@ public class ShowProductsFragment extends DialogFragment {
                                       if (Objects.equals("male",snap.child("Product_Type").getValue(String.class))){
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
+                                          productID.add(snap.child("Product_ID").getValue(String.class));
                                       }
                                   }
                                   break;
@@ -72,6 +74,7 @@ public class ShowProductsFragment extends DialogFragment {
                                       if (Objects.equals("female",snap.child("Product_Type").getValue(String.class))){
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
+                                          productID.add(snap.child("Product_ID").getValue(String.class));
                                       }
                                   }
                                   break;
@@ -79,6 +82,7 @@ public class ShowProductsFragment extends DialogFragment {
                                       if (Objects.equals("tShirt",snap.child("Product_Category").getValue(String.class))){
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
+                                          productID.add(snap.child("Product_ID").getValue(String.class));
                                       }
                                   }
                                   break;
@@ -89,7 +93,7 @@ public class ShowProductsFragment extends DialogFragment {
                             Toast.makeText(getContext(), "Currently No Products Available!", Toast.LENGTH_LONG).show();
                         }
                     }
-                    GridAdapter adapter=new GridAdapter(getContext(),title,imageUrl);
+                    GridAdapter adapter=new GridAdapter(getContext(),title,imageUrl,productID,getParentFragmentManager());
                     gridView.setAdapter(adapter);
                 }
 

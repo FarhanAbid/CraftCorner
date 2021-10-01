@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CraftCorner">
         <activity
+            android:name=".Client.OrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".Client.ClientHomeActivity"
             android:exported="true"
             android:label="@string/title_activity_client_home" />

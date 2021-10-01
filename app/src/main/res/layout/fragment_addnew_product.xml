@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:gravity="center_horizontal"
-                        android:text="Product Images"
+                        android:text="Product Image"
                         android:fontFamily="@font/bauhaus"
                         android:textSize="20dp"
                         android:textColor="@color/purple_500" />
@@ -166,7 +166,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_margin="10dp"
                             android:layout_weight="1"
