@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.craftcorner.Client.ui.HomeFragment;
+import com.example.craftcorner.Client.ui.OrdersFragment;
 import com.example.craftcorner.ProfileFragment;
 import com.example.craftcorner.R;
 import com.example.craftcorner.Tailor.fragments.ProductsFragment;
@@ -40,6 +41,13 @@ public class TailorHomeActivity extends AppCompatActivity {
                     break;
                     case R.id.navigation_profile:{
                         new ProfileFragment().show(getSupportFragmentManager(),"Profile");
+                    }
+                    break;
+                    case R.id.navigation_orders:{
+                        Fragment fragment=new OrdersFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container_view,fragment)
+                                .commit();
                     }
                     break;
                 }

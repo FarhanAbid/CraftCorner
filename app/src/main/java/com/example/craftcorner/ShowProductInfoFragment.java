@@ -58,7 +58,6 @@ public class ShowProductInfoFragment extends DialogFragment {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                productID=result.getString("productId");
-                Toast.makeText(getContext(), productID, Toast.LENGTH_SHORT).show();
 
                 DatabaseReference reference= FirebaseDatabase.getInstance().getReference("CraftCorner_Products");
 
@@ -76,7 +75,7 @@ public class ShowProductInfoFragment extends DialogFragment {
                                 productTitle.setText(snap.child("Product_Title").getValue(String.class));
                                 productPrice.setText("Rs. "+snap.child("Product_Price").getValue(String.class));
                                 productStatus.setText(snap.child("Product_Status").getValue(String.class));
-                                productRating.setText(snap.child("Product_Rating").getValue(String.class));
+                                productRating.setText("Rating "+snap.child("Product_Rating").getValue(String.class));
                                 productCategory.setText(snap.child("Product_Type").getValue(String.class)+" #"+snap.child("Product_Category").getValue(String.class));
                                 productDesc.setText(snap.child("Product_Description").getValue(String.class));
                                 tailorID=snap.child("Product_Tailor_ID").getValue(String.class);

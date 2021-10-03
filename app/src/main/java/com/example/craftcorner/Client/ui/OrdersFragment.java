@@ -2,65 +2,79 @@ package com.example.craftcorner.Client.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.craftcorner.OrderAdapter;
 import com.example.craftcorner.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OrdersFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+
 public class OrdersFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    ArrayList<String> orderID, orderTitle, orderPrice, orderStatus,orderTailorID;
 
-    public OrdersFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment OrdersFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static OrdersFragment newInstance(String param1, String param2) {
-        OrdersFragment fragment = new OrdersFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_orders, container, false);
+
+        View root=inflater.inflate(R.layout.fragment_orders, container, false);
+
+        ListView orderList=root.findViewById(R.id.orderList);
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("CraftCorner_Orders");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists() && snapshot.hasChildren()) {
+
+                    orderID=new ArrayList<>();
+                    orderTitle=new ArrayList<>();
+                    orderPrice=new ArrayList<>();
+                    orderStatus=new ArrayList<>();
+                    orderTailorID=new ArrayList<>();
+
+                    for (DataSnapshot snap : snapshot.getChildren()) {
+
+                        orderID.add(snap.child("Order_ID").getValue(String.class));
+                        orderTitle.add(snap.child("Order_Title").getValue(String.class));
+                        orderPrice.add(snap.child("Order_Price").getValue(String.class));
+                        orderStatus.add(snap.child("Order_Status").getValue(String.class));
+                        orderTailorID.add(snap.child("Order_TailorID").getValue(String.class));
+
+                    }
+
+                    OrderAdapter orderAdapter =new OrderAdapter(getContext(),orderID,orderTitle,orderPrice,orderStatus,orderTailorID);
+                    orderList.setAdapter(orderAdapter);
+                }else {
+                    Toast.makeText(getContext(), "No Order Found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return root;
     }
 }

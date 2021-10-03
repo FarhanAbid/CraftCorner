@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:scrollbars="none"
     android:layout_height="match_parent"
     tools:context=".Client.OrderActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/layout_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/product_tool_bar"
+            android:layout_width="match_parent"
+            android:background="@color/purple_500"
+            android:layout_height="40dp"/>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
@@ -20,6 +28,17 @@
         app:indicatorColor="@color/purple_500"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <com.google.android.material.card.MaterialCardView
         android:layout_margin="10dp"
@@ -84,6 +103,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:scaleType="fitXY"
                 android:id="@+id/resource_image"
                 android:background="@color/browser_actions_bg_grey"
                 android:src="@drawable/ic__add"/>
@@ -128,7 +148,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Width (m)"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +164,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Length (m)"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,7 +187,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Age (Y)"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,7 +203,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Hours"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,7 +251,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Shoulder (m)"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textSize="14sp"
                         tools:ignore="TouchTargetSizeCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -249,7 +269,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Arms (m)"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textSize="14sp"
                         tools:ignore="TouchTargetSizeCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -306,9 +326,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/order_register"
         app:cornerRadius="20dp"
+        android:layout_margin="10dp"
         android:text="Order Now"
         android:textAllCaps="false"/>
 
     </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
+
+</LinearLayout>
