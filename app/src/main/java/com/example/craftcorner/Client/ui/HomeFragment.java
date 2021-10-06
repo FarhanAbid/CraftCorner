@@ -98,7 +98,14 @@ public class HomeFragment extends Fragment {
         kurta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.add(android.R.id.content, new ShowProductsFragment())
+                        .addToBackStack(null).commit();
+                Bundle result = new Bundle();
+                result.putString("bundleKey", "kurta");
+                fragmentManager.setFragmentResult("requestKey", result);
             }
         });
 
@@ -119,6 +126,46 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+        kamizShalwar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.add(android.R.id.content, new ShowProductsFragment())
+                        .addToBackStack(null).commit();
+                Bundle result = new Bundle();
+                result.putString("bundleKey", "kamizShalwar");
+                fragmentManager.setFragmentResult("requestKey", result);
+            }
+        });
+        suit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.add(android.R.id.content, new ShowProductsFragment())
+                        .addToBackStack(null).commit();
+                Bundle result = new Bundle();
+                result.putString("bundleKey", "suit");
+                fragmentManager.setFragmentResult("requestKey", result);
+            }
+        });
+        faraq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager =getActivity().getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.add(android.R.id.content, new ShowProductsFragment())
+                        .addToBackStack(null).commit();
+                Bundle result = new Bundle();
+                result.putString("bundleKey", "faraq");
+                fragmentManager.setFragmentResult("requestKey", result);
+            }
+        });
 
         return root;
     }

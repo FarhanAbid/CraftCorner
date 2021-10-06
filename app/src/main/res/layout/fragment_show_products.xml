@@ -5,8 +5,19 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".Client.fragments.ShowProductsFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Craft Corner"
+        android:textSize="40dp"
+        android:id="@+id/productType"
+        android:textColor="@color/purple_500"
+        android:gravity="center"
+        android:fontFamily="@font/bauhaus"/>
 
     <GridView
+        android:layout_below="@id/productType"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"

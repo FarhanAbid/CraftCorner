@@ -99,7 +99,9 @@ public class ShowProductInfoFragment extends DialogFragment {
         contactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(getContext(), MessagingActivity.class);
+                intent.putExtra("TailorID",tailorID);
+                startActivity(intent);
             }
         });
 

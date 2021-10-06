@@ -6,7 +6,9 @@
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable/background_shape.xml" value="0.16018518518518518" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21574074074074073" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable/msg_send.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable/nav_background.xml" value="0.18611111111111112" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable/receiver.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable/rounded_dialog.xml" value="0.18611111111111112" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/drawable/vector.xml" value="0.2" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_client_home.xml" value="0.18568840579710144" />
@@ -14,12 +16,17 @@
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_get_started.xml" value="0.14" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_home.xml" value="0.19701086956521738" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_main.xml" value="0.1953125" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_messaging.xml" value="0.209375" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_order.xml" value="0.22" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_tailor_auth.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/activity_tailor_home.xml" value="0.18885869565217392" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/chat_item_left.xml" value="0.209375" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/chat_item_right.xml" value="0.209375" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_addnew_product.xml" value="0.17980072463768115" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_chats.xml" value="0.20380434782608695" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_dashboard.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_maps.xml" value="0.20948410630536737" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_messages.xml" value="0.19701086956521738" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_notifications.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_notifications2.xml" value="0.19701086956521738" />
@@ -30,6 +37,7 @@
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_search.xml" value="0.1671195652173913" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_show_product_info.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_show_products.xml" value="0.19701086956521738" />
+        <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_tailor_home.xml" value="0.20380434782608695" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/fragment_tailor_sign_sheet.xml" value="0.20108695652173914" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/order_adapter.xml" value="0.209375" />
         <entry key="..\:/Users/Farhan Abid/AndroidStudioProjects/CraftCorner/app/src/main/res/layout/slider_carousel_items.xml" value="0.20108695652173914" />

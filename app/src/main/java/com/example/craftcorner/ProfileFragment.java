@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.craftcorner.Tailor.RegistrationFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,6 +73,9 @@ public class ProfileFragment extends DialogFragment {
                     break;
                     case R.id.my_location:{
 
+                        //ProfileFragment.this.dismiss();
+
+                       new MapsFragment().show(getParentFragmentManager(),"Maps");
                     }
                     break;
                     case R.id.accountSignOut:{

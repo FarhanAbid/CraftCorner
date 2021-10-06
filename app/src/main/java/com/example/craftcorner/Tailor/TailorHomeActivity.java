@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.craftcorner.Client.ui.HomeFragment;
+import com.example.craftcorner.Client.ui.NotificationNavigationFragment;
 import com.example.craftcorner.Client.ui.OrdersFragment;
 import com.example.craftcorner.ProfileFragment;
 import com.example.craftcorner.R;
 import com.example.craftcorner.Tailor.fragments.ProductsFragment;
+import com.example.craftcorner.Tailor.fragments.TailorHomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -50,7 +52,22 @@ public class TailorHomeActivity extends AppCompatActivity {
                                 .commit();
                     }
                     break;
+                    case R.id.navigation_home:{
+                        Fragment fragment=new TailorHomeFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container_view,fragment)
+                                .commit();
+                    }
+                    break;
+                    case R.id.navigation_notifications:{
+                        Fragment fragment=new NotificationNavigationFragment();
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container_view,fragment)
+                                .commit();
+                    }
+                    break;
                 }
+
 
                 return true;
             }

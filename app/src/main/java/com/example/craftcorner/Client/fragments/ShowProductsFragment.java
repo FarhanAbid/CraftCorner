@@ -1,5 +1,6 @@
 package com.example.craftcorner.Client.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.craftcorner.GridAdapter;
@@ -35,11 +37,15 @@ public class ShowProductsFragment extends DialogFragment {
 
     String productType;
 
+    TextView showProductType;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root= inflater.inflate(R.layout.fragment_show_products, container, false);
 
+
+        showProductType=root.findViewById(R.id.productType);
         GridView gridView=root.findViewById(R.id.products_grid_view);
 
         getParentFragmentManager().setFragmentResultListener("requestKey", getViewLifecycleOwner(), new FragmentResultListener() {
@@ -53,6 +59,7 @@ public class ShowProductsFragment extends DialogFragment {
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("CraftCorner_Products");
         if (isNetworkAvailable()){
             reference.addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     imageUrl=new ArrayList<>();
@@ -67,7 +74,8 @@ public class ShowProductsFragment extends DialogFragment {
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
-                                      }
+                                          showProductType.setText("Men");
+                                      }else showProductType.setText("No Product Found");
                                   }
                                   break;
                                   case "female":{
@@ -75,7 +83,8 @@ public class ShowProductsFragment extends DialogFragment {
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
-                                      }
+                                          showProductType.setText("Women");
+                                      }else showProductType.setText("No Product Found");
                                   }
                                   break;
                                   case "tShirt":{
@@ -83,9 +92,48 @@ public class ShowProductsFragment extends DialogFragment {
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
+                                          showProductType.setText("T-Shirts");
+                                      }else showProductType.setText("No Product Found");
+                                  }
+                                  break;
+                                  case "kurta":{
+                                      if (Objects.equals("kurta",snap.child("Product_Category").getValue(String.class))){
+                                          imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
+                                          title.add(snap.child("Product_Title").getValue(String.class));
+                                          productID.add(snap.child("Product_ID").getValue(String.class));
+                                          showProductType.setText("Kurta");
+                                      }else showProductType.setText("No Product Found");
+                                  }
+                                  break;
+                                  case "suit":{
+                                      if (Objects.equals("suit",snap.child("Product_Category").getValue(String.class))){
+                                          imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
+                                          title.add(snap.child("Product_Title").getValue(String.class));
+                                          productID.add(snap.child("Product_ID").getValue(String.class));
+                                          showProductType.setText("Suits");
+                                      }else showProductType.setText("No Product Found");
+                                  }
+                                  break;
+                                  case "faraq":{
+                                      if (Objects.equals("faraq",snap.child("Product_Category").getValue(String.class))){
+                                          imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
+                                          title.add(snap.child("Product_Title").getValue(String.class));
+                                          productID.add(snap.child("Product_ID").getValue(String.class));
+                                          showProductType.setText("Faraqs");
+                                      }else showProductType.setText("No Product Found");
+                                  }
+                                  break;
+                                  case "kamizShalwar":{
+                                      if (Objects.equals("kamizShalwar",snap.child("Product_Category").getValue(String.class))){
+                                          imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
+                                          title.add(snap.child("Product_Title").getValue(String.class));
+                                          productID.add(snap.child("Product_ID").getValue(String.class));
+                                          showProductType.setText("Kamiz-Shalwar");
+
                                       }
                                   }
                                   break;
+
                               }
 
 

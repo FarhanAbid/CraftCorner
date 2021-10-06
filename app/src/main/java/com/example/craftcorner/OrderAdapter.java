@@ -86,51 +86,16 @@ public class OrderAdapter extends ArrayAdapter {
         order_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference reference= FirebaseDatabase.getInstance().getReference("CraftCorner_Orders");
+               // DatabaseReference reference= FirebaseDatabase.getInstance().getReference("CraftCorner_Orders");
                 if (Objects.equals(FirebaseAuth.getInstance().getCurrentUser().getUid(),orderTailorID.get(position))){
-                    order_button.setText("Deliver");
+                    order_button.setText("Accepted");
                    
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot snap:snapshot.getChildren()) {
-                                if (Objects.equals(orderID.get(position),snap.child("Order_ID").getValue(String.class))){
-                                    HashMap<String,Object> hashMap=new HashMap<>();
-                                    hashMap.put("Order_Status","inProgress");
 
-                                }
-                                
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                    
                 }else {
                     order_button.setText("Canceled");
                     order_button.setBackgroundColor(Color.GRAY);
 
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot snap:snapshot.getChildren()) {
-                                if (Objects.equals(orderID.get(position),snap.child("Order_ID").getValue(String.class))){
-                                    HashMap<String,Object> hashMap=new HashMap<>();
-                                    hashMap.put("Order_Status","cancel");
 
-                                }
-
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
                 }
             }
         });
