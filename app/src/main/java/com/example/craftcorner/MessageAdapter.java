@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
@@ -72,7 +73,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.RecycleV
         return message.size();
     }
 
-    public class RecycleViewHolder extends RecyclerView.ViewHolder{
+    public static class RecycleViewHolder extends RecyclerView.ViewHolder{
 
          TextView show_message;
          TextView seenImage;
@@ -87,7 +88,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.RecycleV
     @Override
     public int getItemViewType(int position) {
 
-        return MESSAGE_TYPE_RIGHT;
+        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+
+        assert firebaseUser != null;
+        if (sender.get(position).equals(firebaseUser.getUid())){
+            return MESSAGE_TYPE_RIGHT;
+        }else
+            return MESSAGE_TYPE_LEFT;
 
     }
 

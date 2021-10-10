@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.craftcorner.Client.fragments.NotificationsFragment;
 import com.example.craftcorner.Client.ui.HomeFragment;
 import com.example.craftcorner.Client.ui.NotificationNavigationFragment;
 import com.example.craftcorner.Client.ui.OrdersFragment;
@@ -60,7 +61,7 @@ public class TailorHomeActivity extends AppCompatActivity {
                     }
                     break;
                     case R.id.navigation_notifications:{
-                        Fragment fragment=new NotificationNavigationFragment();
+                        Fragment fragment=new NotificationsFragment();
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.fragment_container_view,fragment)
                                 .commit();

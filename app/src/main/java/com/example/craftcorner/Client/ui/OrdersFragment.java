@@ -1,5 +1,6 @@
 package com.example.craftcorner.Client.ui;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.craftcorner.OrderAdapter;
@@ -38,9 +40,11 @@ public class OrdersFragment extends Fragment {
         View root=inflater.inflate(R.layout.fragment_orders, container, false);
 
         ListView orderList=root.findViewById(R.id.orderList);
+        TextView orderTextView=root.findViewById(R.id.orderTextView);
 
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("CraftCorner_Orders");
         reference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -53,12 +57,22 @@ public class OrdersFragment extends Fragment {
                     orderTailorID=new ArrayList<>();
 
                     for (DataSnapshot snap : snapshot.getChildren()) {
+                        if (Objects.equals(FirebaseAuth.getInstance().getCurrentUser().getUid(),snap.child("Order_UserID").getValue(String.class))) {
 
-                        orderID.add(snap.child("Order_ID").getValue(String.class));
-                        orderTitle.add(snap.child("Order_Title").getValue(String.class));
-                        orderPrice.add(snap.child("Order_Price").getValue(String.class));
-                        orderStatus.add(snap.child("Order_Status").getValue(String.class));
-                        orderTailorID.add(snap.child("Order_TailorID").getValue(String.class));
+                            orderID.add(snap.child("Order_ID").getValue(String.class));
+                            orderTitle.add(snap.child("Order_Title").getValue(String.class));
+                            orderPrice.add(snap.child("Order_Price").getValue(String.class));
+                            orderStatus.add(snap.child("Order_Status").getValue(String.class));
+                            orderTailorID.add(snap.child("Order_TailorID").getValue(String.class));
+                            orderTextView.setText("Product Orders");
+                        }else if (Objects.equals(FirebaseAuth.getInstance().getCurrentUser().getUid(),snap.child("Order_TailorID").getValue(String.class))){
+                            orderID.add(snap.child("Order_ID").getValue(String.class));
+                            orderTitle.add(snap.child("Order_Title").getValue(String.class));
+                            orderPrice.add(snap.child("Order_Price").getValue(String.class));
+                            orderStatus.add(snap.child("Order_Status").getValue(String.class));
+                            orderTailorID.add(snap.child("Order_TailorID").getValue(String.class));
+                            orderTextView.setText("Product Orders");
+                        }
 
                     }
 

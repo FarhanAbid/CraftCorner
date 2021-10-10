@@ -38,13 +38,7 @@ public class NotificationNavigationFragment extends Fragment {
 
         View root =LayoutInflater.from(getContext()).inflate(R.layout.fragment_nav_notifications, container, false);
 
-       TabLayout tableLayout=root.findViewById(R.id.tabLayout);
-        ViewPager viewPager=root.findViewById(R.id.tabContainer);
-        TabAdapter tabAdapter=new TabAdapter(getParentFragmentManager());
-        tabAdapter.addFragments(new MessagesFragment(),"Messages");
-        tabAdapter.addFragments(new NotificationsFragment(), "Notifications");
-        viewPager.setAdapter(tabAdapter);
-       tableLayout.setupWithViewPager(viewPager);
+
 
 
         return root;

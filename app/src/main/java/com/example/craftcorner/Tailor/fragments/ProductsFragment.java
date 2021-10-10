@@ -68,7 +68,7 @@ public class ProductsFragment extends Fragment {
                             noProductImage.setVisibility(View.VISIBLE);
                         }
                     }
-                    GridAdapter adapter=new GridAdapter(getContext(),title,imageUrl,productID,getParentFragmentManager());
+                    GridAdapter adapter=new GridAdapter(getContext(),title,imageUrl,productID, requireActivity().getSupportFragmentManager());
                     gridView.setAdapter(adapter);
                 }
 

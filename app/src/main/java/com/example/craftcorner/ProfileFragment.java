@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.craftcorner.Client.fragments.MessagesFragment;
 import com.example.craftcorner.Tailor.RegistrationFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
@@ -26,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
 
 
 public class ProfileFragment extends DialogFragment {
@@ -81,7 +84,18 @@ public class ProfileFragment extends DialogFragment {
                     case R.id.accountSignOut:{
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(getActivity(), GetStartedActivity.class));
-                        getActivity().finish();
+                        requireActivity().finish();
+                    }
+                    break;
+                    case R.id.my_Chats:{
+                        ProfileFragment.this.dismiss();
+                        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                        MessagesFragment newFragment = new MessagesFragment();
+
+                        FragmentTransaction transaction = fragmentManager.beginTransaction();
+                        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        transaction.add(android.R.id.content, newFragment)
+                                .addToBackStack(null).commit();
                     }
                     break;
                 }

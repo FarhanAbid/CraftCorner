@@ -158,7 +158,7 @@ public class OrderActivity extends AppCompatActivity {
                         upLoadOrder(size,otherSizes,age,deliveryTime);
                     }
                 }else {
-                    new MaterialAlertDialogBuilder(OrderActivity.this).setTitle("Network Error").setMessage("Your device may not have any internet Connection.").setNeutralButton("Ok", null).show();
+                    Toast.makeText(getApplicationContext(), "Your device may not have any internet Connection.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -183,13 +183,13 @@ public class OrderActivity extends AppCompatActivity {
             hashMap.put("Order_UserSizeDetails",otherSizes);
             hashMap.put("Order_Status","pending");
             hashMap.put("Order_ID",reference.push().getKey());
-            hashMap.put("Order_UserID",FirebaseAuth.getInstance().getCurrentUser().getUid());
+            hashMap.put("Order_UserID", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
             hashMap.put("Order_TailorID",tailorID);
             hashMap.put("Order_Payment","OnDelivery");
 
             StorageReference storageReference= FirebaseStorage.getInstance().getReference("OrderImage"+reference.push().getKey());
             if (uri==null){
-                Toast.makeText(getApplicationContext(), "Image Uri Not Found, Please again select an image.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderActivity.this, "Image Uri Not Found, Please again select an image.", Toast.LENGTH_SHORT).show();
             }else {
                 UploadTask uploadTask=storageReference.putFile(uri);
                 uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -203,7 +203,7 @@ public class OrderActivity extends AppCompatActivity {
                         }
                         if (!task.isSuccessful()){
                             Toast.makeText(getApplicationContext(), "Uploading Failed", Toast.LENGTH_SHORT).show();
-                            throw task.getException();
+                            throw Objects.requireNonNull(task.getException());
 
                         }else
                             return storageReference.getDownloadUrl();
@@ -218,8 +218,11 @@ public class OrderActivity extends AppCompatActivity {
                             reference.push().setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    progressIndicator.setVisibility(View.GONE);
-                                    new MaterialAlertDialogBuilder(OrderActivity.this).setTitle("Order Registered").setMessage("Your order is registered now. Soon the respective tailor will respond to you. CraftCorner Team.").setNeutralButton("Ok",null).show();
+                                    if (task.isSuccessful()){
+                                        progressIndicator.setVisibility(View.GONE);
+                                        Toast.makeText(getApplicationContext(), "Order request is sent.", Toast.LENGTH_LONG).show();
+                                    }
+
                                 }
                             });
                         }

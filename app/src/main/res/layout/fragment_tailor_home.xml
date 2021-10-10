@@ -41,7 +41,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/purple_500"
                 android:layout_height="wrap_content"
-                android:text="Total Product Sell"
+                android:text="Total Products Sell"
                 android:fontFamily="@font/bauhaus"
                 android:textSize="25dp"
                 android:gravity="center"/>

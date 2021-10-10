@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.craftcorner.GridAdapter;
 import com.example.craftcorner.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -71,38 +72,37 @@ public class ShowProductsFragment extends DialogFragment {
                               switch (productType){
                                   case "male":{
                                       if (Objects.equals("male",snap.child("Product_Type").getValue(String.class))){
+                                          showProductType.setText("Men");
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
                                           showProductType.setText("Men");
-                                      }else showProductType.setText("No Product Found");
-                                  }
-                                  break;
+                                      }
+                                  } break;
                                   case "female":{
                                       if (Objects.equals("female",snap.child("Product_Type").getValue(String.class))){
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
                                           showProductType.setText("Women");
-                                      }else showProductType.setText("No Product Found");
-                                  }
-                                  break;
+                                      }
+                                  } break;
                                   case "tShirt":{
                                       if (Objects.equals("tShirt",snap.child("Product_Category").getValue(String.class))){
+                                          showProductType.setText("T-Shirts");
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
                                           showProductType.setText("T-Shirts");
-                                      }else showProductType.setText("No Product Found");
-                                  }
-                                  break;
+                                      }
+                                  } break;
                                   case "kurta":{
                                       if (Objects.equals("kurta",snap.child("Product_Category").getValue(String.class))){
                                           imageUrl.add(snap.child("Product_ImageUrl").getValue(String.class));
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
                                           showProductType.setText("Kurta");
-                                      }else showProductType.setText("No Product Found");
+                                      }
                                   }
                                   break;
                                   case "suit":{
@@ -111,7 +111,7 @@ public class ShowProductsFragment extends DialogFragment {
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
                                           showProductType.setText("Suits");
-                                      }else showProductType.setText("No Product Found");
+                                      }
                                   }
                                   break;
                                   case "faraq":{
@@ -120,7 +120,7 @@ public class ShowProductsFragment extends DialogFragment {
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
                                           showProductType.setText("Faraqs");
-                                      }else showProductType.setText("No Product Found");
+                                      }
                                   }
                                   break;
                                   case "kamizShalwar":{
@@ -129,10 +129,13 @@ public class ShowProductsFragment extends DialogFragment {
                                           title.add(snap.child("Product_Title").getValue(String.class));
                                           productID.add(snap.child("Product_ID").getValue(String.class));
                                           showProductType.setText("Kamiz-Shalwar");
-
                                       }
                                   }
                                   break;
+                                  default:{
+                                      showProductType.setText("No Product Found");
+                                      new MaterialAlertDialogBuilder(getContext()).setTitle("No product found").setMessage("No, product found related to this category.").setNeutralButton("Ok",null).show();
+                                  }
 
                               }
 

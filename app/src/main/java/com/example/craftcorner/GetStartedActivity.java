@@ -129,6 +129,7 @@ public class GetStartedActivity extends AppCompatActivity {
 
     }
 
+    // google account information store in firebase
 
     public void firebaseGoogleClientAuth(String token){
         if (token==null){
@@ -205,6 +206,7 @@ public class GetStartedActivity extends AppCompatActivity {
 
     }
 
+    // cehck internet
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

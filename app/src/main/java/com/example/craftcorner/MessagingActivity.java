@@ -82,15 +82,16 @@ public class MessagingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String message= Objects.requireNonNull(text.getText()).toString();
                 if (message.isEmpty()){
-
+                    Toast.makeText(getApplicationContext(), "Write something", Toast.LENGTH_SHORT).show();
                 }else {
                     String userID= Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+                    text.setText("");
                     sendMessage(userID,tailorID,message);
                 }
             }
         });
 
-        seenMessages(FirebaseAuth.getInstance().getCurrentUser().getUid(),tailorID);
+        seenMessages(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(),tailorID);
     }
 
     private void readMessage(String userID, String tailorID) {
@@ -101,8 +102,9 @@ public class MessagingActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean seen = false;
                 for (DataSnapshot snap:snapshot.getChildren()) {
-                    boolean seen = false;
+                    seen = false;
                     if (Objects.equals(userID,snap.child("Receiver").getValue(String.class)) &&
                             Objects.equals(tailorID,snap.child("Sender").getValue(String.class))
 
@@ -116,9 +118,10 @@ public class MessagingActivity extends AppCompatActivity {
                         seen=snap.child("isSeen").getValue(Boolean.class);
 
                     }
-                   MessageAdapter messageAdapter=new MessageAdapter(MessagingActivity.this,sender,receiver,message,seen);
-                    recyclerView.setAdapter(messageAdapter);
+
                 }
+                MessageAdapter messageAdapter=new MessageAdapter(MessagingActivity.this,sender,receiver,message,seen);
+                recyclerView.setAdapter(messageAdapter);
             }
 
             @Override
@@ -132,31 +135,38 @@ public class MessagingActivity extends AppCompatActivity {
 
     private void sendMessage(String userID, String tailorID, String message) {
 
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Chats");
+        try {
+            HashMap<String, Object> hashMap=new HashMap<>();
+            hashMap.put("Sender",userID);
+            hashMap.put("Receiver",tailorID);
+            hashMap.put("Message",message);
+            hashMap.put("isSeen",false);
+            reference.push().setValue(hashMap);
 
-        HashMap<String, Object> hashMap=new HashMap<>();
-
-        hashMap.put("Sender",userID);
-        hashMap.put("Receiver",tailorID);
-        hashMap.put("Message",message);
-        hashMap.put("isSeen",false);
-        reference.child("Chats").push().setValue(hashMap);
-
-
-        DatabaseReference chatRef=FirebaseDatabase.getInstance().getReference("ChatList").child(userID).child(tailorID);
-        chatRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()){
-                    chatRef.child("id").setValue(tailorID);
+            DatabaseReference chatRef=FirebaseDatabase.getInstance().getReference("ChatList").child(userID).child(tailorID);
+            chatRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (!dataSnapshot.exists()){
+                        chatRef.child("id").setValue(tailorID);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+
+
+        }catch (Exception e){
+            Toast.makeText(MessagingActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
 
     }
 

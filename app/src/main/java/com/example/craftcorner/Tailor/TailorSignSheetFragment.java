@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.AuthResult;
@@ -37,6 +38,7 @@ public class TailorSignSheetFragment extends BottomSheetDialogFragment {
     FirebaseAuth auth;
 
 
+    CircularProgressIndicator progressIndicator;
     TextInputEditText tailor_email, tailor_password;
     MaterialButton tailor_signInButton;
     MaterialTextView forgotPin, forgotPin_text_note, tailor_new_account;
@@ -53,20 +55,29 @@ public class TailorSignSheetFragment extends BottomSheetDialogFragment {
         tailor_email=root.findViewById(R.id.tailor_email_editText);
         tailor_password=root.findViewById(R.id.tailor_password_editText);
 
+        progressIndicator=root.findViewById(R.id.progressIndicator);
+
 
         forgotPin_text_note=root.findViewById(R.id.forgotPin_noteText);
         auth=FirebaseAuth.getInstance();
 
+
+        //forget password tailor
+
         forgotPin.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                if (tailor_email.getText().toString().isEmpty()){
+                String email= Objects.requireNonNull(tailor_email.getText()).toString();
+                if (email.isEmpty()){
                     forgotPin_text_note.setText("Please Enter the Email First!");
                 }else {
-                   auth.sendPasswordResetEmail(tailor_email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    progressIndicator.setVisibility(View.VISIBLE);
+                   auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                        @Override
                        public void onComplete(@NonNull Task<Void> task) {
                            forgotPin_text_note.setText("");
+                           progressIndicator.setVisibility(View.GONE);
                            new MaterialAlertDialogBuilder(requireContext()).setTitle("Password Reset Email").setMessage("An Password Reset link has been sent to your Email. Please check your email.").setNeutralButton("Ok",null).show();
                        }
                    }) ;
@@ -84,14 +95,19 @@ public class TailorSignSheetFragment extends BottomSheetDialogFragment {
                     if (Objects.requireNonNull(email).isEmpty() && Objects.requireNonNull(password).isEmpty()){
                         forgotPin_text_note.setText("Email and Password Required!");
                     }else {
+                        progressIndicator.setVisibility(View.VISIBLE);
                         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
+                                    progressIndicator.setVisibility(View.GONE);
                                     Toast.makeText(getContext(), "Account Login Successfully!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getActivity(),TailorHomeActivity.class));
                                     requireActivity().finish();
-                                }else Toast.makeText(requireContext(), "Not Found", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    progressIndicator.setVisibility(View.GONE);
+                                    Toast.makeText(requireContext(), "Not Found", Toast.LENGTH_SHORT).show();
+                                }
 
                             }
                         });

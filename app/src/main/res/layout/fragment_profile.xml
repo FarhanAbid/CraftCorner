@@ -29,8 +29,8 @@
                 android:layout_gravity="center"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/craftcorner"
-                android:contentDescription="TODO" />
+                android:scaleType="fitXY"
+                android:src="@drawable/craftcorner" />
 
         </com.google.android.material.card.MaterialCardView>
         <LinearLayout
@@ -40,7 +40,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:gravity="center_vertical|bottom"
                 android:textSize="20dp"
                 android:textStyle="bold"
